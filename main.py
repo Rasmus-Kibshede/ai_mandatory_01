@@ -9,6 +9,8 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import pandas as pd
 import numpy as np
 
+##TODO MAIN SKAL rydes op og kun kalde på metoder i regression, og linear regression.
+
 # Loads our modified data
 data = data_handler.load_data('data/modified_dataset.csv')
 # data_visualizer.visualize_data(data)
