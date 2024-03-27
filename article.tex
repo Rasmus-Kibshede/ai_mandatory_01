@@ -1,0 +1,81 @@
+\documentclass[a4paper, twocolumn]{article}
+
+
+% you can switch between these two (and more) styles by commenting one out (use percentage)
+\usepackage[backend=biber]{biblatex}
+%\usepackage[backend=biber, style=authoryear-icomp]{biblatex}
+\addbibresource{./refs.bib}
+
+\usepackage{graphicx}
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{gray}{0.9}
+
+% code listing: https://tex.stackexchange.com/questions/19004/how-to-format-an-inline-source-code
+\lstset{
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    keywordstyle={blue},
+    commentstyle=\color[gray]{0.6}
+    stringstyle=\color[RGB]{255, 150, 75}
+}
+\newcommand{\inlinecode}[2]{\colorbox{lightgray}{\lstinline[language=#1]$#2$}}
+
+\author{Joachim Richter et al.}
+\title{Using \LaTeX}
+
+
+
+\begin{document}
+
+\twocolumn[
+    \begin{@twocolumnfalse}
+        \maketitle
+        \begin{abstract}
+            Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name? 
+            Is it possible to predict a car's make based on the same factors? 
+            This paper explores these questions using linear regression and logistic regression.
+        \end{abstract}
+    \end{@twocolumnfalse}
+    \vspace{1cm}
+]
+
+
+\section{Introduction\label{sec:Introduction}}
+
+We identified missing datapoints in horsepower replaced with a '?'. 
+We decided, that since the dataset was so small, that we would manually infer the horsepower based on looking at other cars, with similar values, and deduct the missing horsepower. 
+
+\section{Research Question\label{sec:Research Question}}
+
+The research question must be phrased as a question, ending with "?".
+It is often a good idea to structure your research question into one overall question with a number of sub-questions, and you can number them i.e. Q1, Q2 etc. to make it easy to refer to them.
+Alternatively, you can phrase a hypothesis instead of a research question.
+
+\section{Methods\label{sec:Methods}}
+
+The methods section is for documenting the methods you apply to conduct your research.
+It is about the methods and how they will be applied, but not about their actual application.
+Ideally, you should write your method section before you start the actual research.
+The methods section must be well referenced.
+
+\section{Analysis\label{sec:Analysis}}
+
+In the analysis section you apply the methods you described in the method section.
+It is specific to your particular paper and your particular research question.
+Make sure to make cross references back to your method section.
+
+\section{Findings\label{sec:Findings}}
+
+Here you present your findings, that is what came out of your analysis.
+Make sure to cross reference back to your analysis section.
+
+\section{Conclusion\label{sec:Conclusion}}
+
+In the conclusion you answer your research question based on your findings.
+Make sure to make cross references to your research question, analysis, and findings sections.
+
+\printbibliography
+
+\end{document}
