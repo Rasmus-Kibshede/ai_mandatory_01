@@ -20,9 +20,6 @@ X = data_handler.data_encoder(X, ['make', 'model'])
 X_test, X_train, X_validation, y_test, y_train, y_validation = data_handler.split_data(X, y)
 print('| Training size:', len(X_train), '| Testing size:', len(X_test), '| Validation size:', len(X_validation), '|\n')
 
-# regression_model.train_model(data)
-# linear_regression_model.train_model(data)
-
 
 models = [MLPRegressor(hidden_layer_sizes=(100, 50), max_iter=1000),
           LinearRegression(),
