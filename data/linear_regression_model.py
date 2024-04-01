@@ -1,5 +1,6 @@
+from keras import Sequential
 from keras.models import load_model
-import tensorflow as tf
+from keras.src.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 import numpy as np
@@ -10,27 +11,29 @@ def train_model(data):
     ##TODO Skal have en save model metode
     ##DATA SPLIT metode
     ##Model load metode osv.
-    X = data.drop(columns=['make', 'model'])
+    # Data preprocessing
+    X = data.drop(columns=['make', 'model'])  # Features
     y = data['make']  # Target
 
+    # Convert categorical 'make' labels into numerical values
     label_encoder = LabelEncoder()
     y = label_encoder.fit_transform(y)
     # X = label_encoder.fit_transform(X)
 
     # Normalize the features
-    scaler = StandardScaler()
-    X = scaler.fit_transform(X)
+    scalar = StandardScaler()
+    X = scalar.fit_transform(X)
 
     # Split the data into train and test sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     X_test, X_validation, y_test, y_validation = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
 
     # Model Building
-    model = tf.keras.Sequential([
-        tf.keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
-        tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dense(len(label_encoder.classes_), activation='softmax')
+    model = Sequential([
+        Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+        Dense(128, activation='relu'),
+        Dense(128, activation='relu'),
+        Dense(len(label_encoder.classes_), activation='softmax')
     ])
 
     # Model Compilation
