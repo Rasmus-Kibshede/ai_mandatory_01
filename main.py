@@ -1,18 +1,13 @@
 from data import data_cleaner, data_handler
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.neural_network import MLPRegressor
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn import preprocessing
-from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
-import numpy as np
-from sklearn.linear_model import Ridge, Lasso
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.neural_network import MLPClassifier, MLPRegressor
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, GradientBoostingRegressor, GradientBoostingClassifier
 from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
+from sklearn import preprocessing
+import numpy as np
 
 data = data_handler.load_data('data/modified_dataset.csv')
 
