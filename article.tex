@@ -20,9 +20,9 @@
     commentstyle=\color[gray]{0.6}
     stringstyle=\color[RGB]{255, 150, 75}
 }
-\newcommand{\inlinecode}[2]{\colorbox{lightgray}{\lstinline[language=#1]$#2$}}
+\newcommand{\inlinecode}[2]{\colorbox{light gray}{\lstinline[language=#1]$#2$}}
 
-\author{Jeffrey Roeder, Jeppe Hallgren, and Kasper Møller}
+\author{Jeffrey Roed, Joachim Richter, and Rasmus Kibshede}
 \title{Predicting Car Mileage and Make using Linear and Logistic Regression}
 
 
@@ -33,9 +33,7 @@
     \begin{@twocolumnfalse}
         \maketitle
         \begin{abstract}
-            Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name? 
-            Is it possible to predict a car's make based on the same factors? 
-            This paper explores these questions using linear regression and logistic regression.
+            
         \end{abstract}
     \end{@twocolumnfalse}
     \vspace{1cm}
@@ -48,6 +46,8 @@
 % The reader should be able to understand your paper based on the background information provided in the introduction.
 
 \section{Research Question\label{sec:Research Question}}
+Q1: Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name?\\
+Q2: Is it possible to predict a car's make based on the same factors? This paper explores these questions using linear regression and logistic regression.
 
 % The research question must be phrased as a question, ending with "?".
 % It is often a good idea to structure your research question into one overall question with a number of sub-questions, and you can number them i.e. Q1, Q2 etc. to make it easy to refer to them.
@@ -55,8 +55,24 @@
 
 \section{Methods\label{sec:Methods}}
 
-We identified missing datapoints in horsepower replaced with a '?'. 
-We decided, that since the dataset was so small, that we would manually infer the horsepower based on looking at other cars, with similar values, and deduct the missing horsepower out of common sense and educated guesses. 
+In order to predict the outcome of a car's miles per gallon and make, two different methods were utilized: linear regression and logistic regression. Linear regression was used to predict the car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name. Logistic regression, on the other hand, was employed to predict the car's make based on the same set of factors.
+
+\subsection{Data Preparation}
+
+For the purpose of this study, a dataset containing information about car performance and make was collected from Henrik Strøm, AI teacher at KEA. Upon initial review of the dataset, we identified missing datapoints within the 'horsepower' variable which were marked with a '?'. Considering the limited size of the dataset, we chose to impute these missing values manually. This was done by examining other cars within the dataset that had similar characteristics and forming educated guesses on the likely horsepower. This approach allowed us to maintain data integrity without resorting to more complex imputation methods which may not be suitable given the dataset's constraints.
+
+\subsubsection{Feature Engineering}
+
+After ensuring the data was complete, we performed feature engineering to transform categorical variables (such as make and model) into numerical values that can be used in the regression models. We utilized one-hot encoding to convert the categorical variables into binary representations.
+
+\subsection{Machine Learning Models}
+
+\subsection{Evaluation}
+To evaluate the performance of our regression models, we employed metrics such as mean squared error (MSE), mean absolute error (MAE) and root mean squared error (RMSE)
+
+\subsection{Implementation}
+
+
 
 % The methods section is for documenting the methods you apply to conduct your research.
 % It is about the methods and how they will be applied, but not about their actual application.
@@ -78,7 +94,5 @@ We decided, that since the dataset was so small, that we would manually infer th
 
 % In the conclusion you answer your research question based on your findings.
 % Make sure to make cross references to your research question, analysis, and findings sections.
-
-\printbibliography
 
 \end{document}
