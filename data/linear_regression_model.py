@@ -20,10 +20,10 @@ def train_model(data):
     X_test, X_train, X_validation, y_test, y_train, y_validation = split_data(X, y)
 
     # Model Building
-    model = build_model(X_train, label_encoder, 64, 3)
+    model = build_model(X_train, label_encoder, 32, 2)
 
     # Model Training
-    fit_model(X_train, model, y_train, 300)
+    fit_model(X_train, model, y_train, 2)
 
     # Model Evaluation
     evaluate_model(X_test, model, y_test)
@@ -49,7 +49,7 @@ def evaluate_model(X_test, model, y_test):
 
 
 def fit_model(X_train, model, y_train, epochs):
-    model.fit(X_train, y_train, epochs=epochs, batch_size=32, validation_split=0.2)
+    model.fit(X_train, y_train, epochs=epochs, batch_size=32)
 
 
 def build_model(X_train, label_encoder, nodes, layers):

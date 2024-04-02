@@ -1,5 +1,6 @@
 import pandas as pd
 from pandas import DataFrame
+from sklearn.model_selection import train_test_split
 
 
 def load_data(path: str):
@@ -19,6 +20,11 @@ def data_encoder(data: DataFrame, columns):
     if len(columns) > 1:
         data[columns[1]].nunique()
     return pd.get_dummies(data, columns=columns)
+
+def split_data(X, y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_test, X_validation, y_test, y_validation = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
+    return X_test, X_train, X_validation, y_test, y_train, y_validation
 
 
 

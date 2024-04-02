@@ -32,9 +32,10 @@ def train_model(data):
 
     # Regression Model
     regression_model = Sequential([
-        Dense(64, activation='relu', input_shape=(X_regression_train.shape[1],)),
-        Dense(64, activation='relu'),
-        Dense(64, activation='relu'),
+        Dense(32, activation='relu', input_shape=(X_regression_train.shape[1],)),
+        Dense(32, activation='relu'),
+        Dense(32, activation='relu'),
+        Dense(32, activation='relu'),
         Dense(1)
     ])
 
@@ -42,8 +43,7 @@ def train_model(data):
     regression_model.compile(optimizer='adam', loss='mse')
 
     # Train the regression model
-    print(X_regression_train.shape, ' Size ', y_regression_train.shape)
-    regression_model.fit(X_regression_train, y_regression_train, epochs=1, batch_size=32, validation_split=0.2)
+    regression_model.fit(X_regression_train, y_regression_train, epochs=500)
 
     # Evaluate the regression model
     regression_mse = regression_model.evaluate(X_regression_test, y_regression_test)
