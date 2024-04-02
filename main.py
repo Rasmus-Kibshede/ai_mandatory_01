@@ -1,3 +1,6 @@
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
 from data import data_cleaner, data_handler
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsClassifier
@@ -7,7 +10,8 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, Grad
     GradientBoostingClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, mean_absolute_error
-from sklearn import preprocessing
+import pandas as pd
+import matplotlib.pyplot as plt
 import joblib
 import numpy as np
 
@@ -16,21 +20,19 @@ data = data_handler.load_data('data/modified_dataset.csv')
 print('\n|----------------------- Regression --------------------------|')
 X = data.drop(['mpg'], axis=1)
 y = data['mpg']
-lab = preprocessing.LabelEncoder()
-y_transform = lab.fit_transform(y)
 
 X = data_handler.data_encoder(X, ['make', 'model'])
-X_test, X_train, X_validation, y_test, y_train, y_validation = data_handler.split_data(X, y_transform)
+X_test, X_train, X_validation, y_test, y_train, y_validation = data_handler.split_data(X, y)
 print('| Training size:', len(X_train), '| Testing size:', len(X_test), '| Validation size:', len(X_validation), '|\n')
-
 
 models = [MLPRegressor(hidden_layer_sizes=(100, 50), max_iter=1000),
           LinearRegression(),
           Ridge(alpha=1.0),
           Lasso(alpha=1.0),
           DecisionTreeRegressor(max_depth=5),
-          RandomForestRegressor(n_estimators=100, max_depth=5),
-          GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3)]
+          GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3),
+          RandomForestRegressor(n_estimators=100, random_state=42),
+          ]
 
 best_model_name = ""
 best_mse = float('inf')
@@ -47,8 +49,8 @@ for model in models:
     r2 = r2_score(y_test, y_pred)
     mae = mean_absolute_error(y_test, y_pred)
     print(f"{model.__class__.__name__} MAE:", mae)
-    #Skal denne med i stedet for MAE?
-    #print(f"{model.__class__.__name__} MSE:", mse)
+    # Skal denne med i stedet for MAE?
+    # print(f"{model.__class__.__name__} MSE:", mse)
     print(f"{model.__class__.__name__} RMSE:", rmse)
     print(f"{model.__class__.__name__} R-squared:", r2, '\n')
     if mse < best_mse and rmse < best_rmse and r2 > best_r_squared:
@@ -72,18 +74,26 @@ print(f"{model.__class__.__name__} MSE:", mse)
 print(f"{model.__class__.__name__} RMSE:", rmse)
 print(f"{model.__class__.__name__} R-squared:", r2, '\n')
 
+plt.figure(figsize=(10, 6))
+plt.scatter(y_validation, predictions)
+plt.xlabel('Actual values')
+plt.ylabel('Predicted values')
+plt.title('Predicted vs Actual values')
+plt.plot([y_validation.min(), y_validation.max()], [y_validation.min(), y_validation.max()], 'k--', lw=4)
+#plt.show()
+
 print('\n|-------------------- Classification -------------------------|')
-X = data.drop(columns=['make', 'model'])
+X = data.drop(columns=['make'])
+X_transformed = data_handler.data_encoder(X, ['model'])
 y = data['make']
-y = lab.fit_transform(y)
-X_test, X_train, X_validation, y_test, y_train, y_validation = data_handler.split_data(X, y)
+X_test, X_train, X_validation, y_test, y_train, y_validation = data_handler.split_data(X_transformed, y)
 print('| Training size:', len(X_train), '| Testing size:', len(X_test), '| Validation size:', len(X_validation), '|\n')
 
-models = [KNeighborsClassifier(n_neighbors=4),  # 3 and 4 looks like the most optimized
-          MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000, random_state=42, learning_rate='adaptive'),
-          DecisionTreeClassifier(criterion='gini', max_depth=50, min_samples_split=2, min_samples_leaf=1),
-          RandomForestClassifier(n_estimators=400, random_state=42),
-          GradientBoostingClassifier(max_depth=50, learning_rate=0.001, random_state=42),
+models = [KNeighborsClassifier(n_neighbors=4),
+          MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10000, random_state=42, learning_rate='adaptive', alpha=0.0001),
+          DecisionTreeClassifier(criterion='gini', max_depth=14, min_samples_split=2, min_samples_leaf=1),
+          RandomForestClassifier(n_estimators=8, random_state=42),
+          GradientBoostingClassifier(max_depth=1000, learning_rate=0.001, random_state=42),
           GaussianNB()]
 
 best_model_name = ""
@@ -91,6 +101,9 @@ best_accuracy = 0.0
 
 for model in models:
     model.fit(X_train, y_train)
+    y_train_pred = model.predict(X_train)
+    accuracy = accuracy_score(y_train, y_train_pred)
+    print(f"{model.__class__.__name__}: Accuracy Training data:", accuracy)
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
 
@@ -105,7 +118,7 @@ loaded_model = joblib.load(f"{best_model_name}.pkl")
 predictions = loaded_model.predict(X_validation)
 accuracy = accuracy_score(y_validation, predictions)
 
-print(f'Validation data evaluation of {best_model_name}: \n')
+print(f'Validation data evaluation of {best_model_name}:')
 print('Accuracy on validation data:', accuracy, '\n')
 
 
