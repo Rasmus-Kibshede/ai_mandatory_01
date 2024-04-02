@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="754fe8aa-c8ca-44a8-80a8-d1499bfd8931" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,34 +100,45 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="360" y="231" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1711963087667">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
     <state x="360" y="231" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1711963087667" />
-    <state width="1771" height="832" key="GridCell.Tab.0.bottom" timestamp="1712002034779">
+    <state width="1771" height="305" key="GridCell.Tab.0.bottom" timestamp="1712050579274">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state width="1771" height="832" key="GridCell.Tab.0.bottom/0.25.1792.1095@0.25.1792.1095" timestamp="1712002034779" />
-    <state width="1771" height="832" key="GridCell.Tab.0.center" timestamp="1712002034778">
+    <state width="1771" height="305" key="GridCell.Tab.0.bottom/0.25.1792.1095@0.25.1792.1095" timestamp="1712050579274" />
+    <state width="1771" height="305" key="GridCell.Tab.0.center" timestamp="1712050579273">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state width="1771" height="832" key="GridCell.Tab.0.center/0.25.1792.1095@0.25.1792.1095" timestamp="1712002034778" />
-    <state width="1771" height="832" key="GridCell.Tab.0.left" timestamp="1712002034778">
+    <state width="1771" height="305" key="GridCell.Tab.0.center/0.25.1792.1095@0.25.1792.1095" timestamp="1712050579273" />
+    <state width="1771" height="305" key="GridCell.Tab.0.left" timestamp="1712050579272">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state width="1771" height="832" key="GridCell.Tab.0.left/0.25.1792.1095@0.25.1792.1095" timestamp="1712002034778" />
-    <state width="1771" height="832" key="GridCell.Tab.0.right" timestamp="1712002034778">
+    <state width="1771" height="305" key="GridCell.Tab.0.left/0.25.1792.1095@0.25.1792.1095" timestamp="1712050579272" />
+    <state width="1771" height="305" key="GridCell.Tab.0.right" timestamp="1712050579274">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state width="1771" height="832" key="GridCell.Tab.0.right/0.25.1792.1095@0.25.1792.1095" timestamp="1712002034778" />
+    <state width="1771" height="305" key="GridCell.Tab.0.right/0.25.1792.1095@0.25.1792.1095" timestamp="1712050579274" />
     <state x="405" y="208" key="SettingsEditor" timestamp="1711967863386">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
     <state x="405" y="208" key="SettingsEditor/0.25.1792.1095@0.25.1792.1095" timestamp="1711967863386" />
-    <state x="716" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1712002212829">
+    <state x="716" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1712002240315">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state x="716" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1792.1095@0.25.1792.1095" timestamp="1712002212829" />
+    <state x="716" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1792.1095@0.25.1792.1095" timestamp="1712002240315" />
   </component>
 </project>
