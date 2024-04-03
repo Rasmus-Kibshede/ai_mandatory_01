@@ -4,7 +4,7 @@
 % you can switch between these two (and more) styles by commenting one out (use percentage)
 \usepackage[backend=biber]{biblatex}
 %\usepackage[backend=biber, style=authoryear-icomp]{biblatex}
-\addbibresource{refs.bib}
+\addbibresource{./refs.bib}
 
 \usepackage{graphicx}
 
@@ -29,13 +29,12 @@
 
 \begin{document}
 
+
 \twocolumn[
     \begin{@twocolumnfalse}
         \maketitle
         \begin{abstract}
-            Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name? 
-            Is it possible to predict a car's make based on the same factors? 
-            This paper explores these questions using linear regression and logistic regression models.
+            
         \end{abstract}
     \end{@twocolumnfalse}
     \vspace{1cm}
@@ -43,13 +42,14 @@
 
 
 \section{Introduction\label{sec:Introduction}}
+group name: Silicon
 
 % The introduction must put your paper into a context.
 % The reader should be able to understand your paper based on the background information provided in the introduction.
 
 \section{Research Question\label{sec:Research Question}}
 Q1: Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name?\\
-Q2: Is it possible to predict a car's make based on the same factors? This paper explores these questions using linear regression and logistic regression.
+Q2: Is it possible to predict a car's make based on the same factors? 
 
 % The research question must be phrased as a question, ending with "?".
 % It is often a good idea to structure your research question into one overall question with a number of sub-questions, and you can number them i.e. Q1, Q2 etc. to make it easy to refer to them.
@@ -57,26 +57,17 @@ Q2: Is it possible to predict a car's make based on the same factors? This paper
 
 \section{Methods\label{sec:Methods}}
 
-In order to predict the outcome of a car's miles per gallon and make, two different methods were utilized: linear regression and logistic regression. Linear regression was used to predict the car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name. Logistic regression, on the other hand, was employed to predict the car's make based on the same set of factors.
+pair plot
 
-% We decided to follow \textcite{goldstein2017deconstructing} and follow the six steps of Data Science Deconstucted. We also needed to consider which data wrangling to perform \textcite{endel2015data}, \textcite{langer2023python}. 
+In this study, linear regression and logistic regression were applied to predict the outcome of a car's miles per gallon and make, respectively. Linear regression utilized factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name to predict miles per gallon. Logistic regression used the same factors to predict the car's make.
 
-% During our analysis of the data set, we discovered several outliers, which led us to investigate and identify additional errors in the data. Among other things, we found four cars where the horsepower values were missing, and we searched for relevant information to fill in these missing values. Additionally, we encountered typos in the 'car name' variable, which we decided to split into 'make' and 'model'. To clean the dataset, we ran a dynamic process where we checked and fixed typos in all 'make' values. We also reviewed the dataset to identify and correct any null values, empty strings, and special characters that had crept into the dataset. These steps were essential to ensure that our data was of high quality and reliable to train and evaluate our models. Another important step was to input missing data for the 'horsepower' variable. Since it was only 6 entires that were missing, we decided to manually search for the missing values. We found the missing values by searching for the car model and year on the internet. The dataset also included different naming for the same car make, such as Chevy and Chevrolet, VW and Volkswagen, Mercedes and Mercedes Benz. We decided to merge these into one category to avoid having the same car make represented by different names. 
+The dataset, provided by Henrik Strøm, an AI teacher at KEA, included details on car performance and make. Initial examination revealed faulty and deficient data. Using well know data cleaning techniques such as Preprocessing \textcite{hellerstein2013quantitative}
 
-\subsection{Data Preparation}
+Following the data completion, feature engineering was conducted. This process transformed categorical variables, such as make and model, into numerical values through the use of one-hot encoding, enabling their inclusion in the regression analysis.
 
-For the purpose of this study, a dataset containing information about car performance and make was collected from Henrik Strøm, AI teacher at KEA. Upon initial review of the dataset, we identified missing datapoints within the 'horsepower' variable which were marked with a '?'. Considering the limited size of the dataset, we chose to impute these missing values manually. This was done by examining other cars within the dataset that had similar characteristics and forming educated guesses on the likely horsepower. This approach allowed us to maintain data integrity without resorting to more complex imputation methods which may not be suitable given the dataset's constraints.
+Different machine learning models were considered, and their performances were gauged using metrics such as mean squared error, mean absolute error, and root mean squared error.
 
-\subsubsection{Feature Engineering}
 
-After ensuring the data was complete, we performed feature engineering to transform categorical variables (such as make and model) into numerical values that can be used in the regression models. We utilized one-hot encoding to convert the categorical variables into binary representations.
-
-\subsection{Machine Learning Models}
-
-\subsection{Evaluation}
-To evaluate the performance of our regression models, we employed metrics such as mean squared error (MSE), mean absolute error (MAE) and root mean squared error (RMSE)
-
-\subsection{Implementation}
 
 % The methods section is for documenting the methods you apply to conduct your research.
 % It is about the methods and how they will be applied, but not about their actual application.
