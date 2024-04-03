@@ -1,6 +1,3 @@
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-
 from data import data_cleaner, data_handler
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsClassifier
@@ -10,7 +7,6 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, Grad
     GradientBoostingClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, mean_absolute_error
-import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
 import numpy as np
@@ -119,7 +115,7 @@ predictions = loaded_model.predict(X_validation)
 accuracy = accuracy_score(y_validation, predictions)
 
 print(f'Validation data evaluation of {best_model_name}:')
-print('Accuracy on validation data:', accuracy, '\n')
+print(f'Accuracy on validation data: {best_accuracy}')
 
 
 def prepare_data():
