@@ -42,14 +42,18 @@
 
 
 \section{Introduction\label{sec:Introduction}}
-group name: Silicon
+Group name: Silicon\\
+Predictive modeling in the automotive industry has become increasingly relevant and valuable in recent years, offering insights into vehicle performance, efficiency, and market trends. In this study, we address two fundamental questions \ref{sec:Research Question}
+ 
+These questions drive our investigation into the predictive capabilities of machine learning models when applied to a dataset comprising detailed information about automotive performance and specifications. By exploring these questions, we aim to assess the feasibility and accuracy of leveraging predictive analytics techniques, particularly linear regression for mpg prediction and logistic regression for make prediction. Our findings have the potential to contribute valuable insights to the automotive industry, informing decisions related to vehicle design, marketing strategies, and consumer preferences.
+
 
 % The introduction must put your paper into a context.
 % The reader should be able to understand your paper based on the background information provided in the introduction.
 
 \section{Research Question\label{sec:Research Question}}
-Q1: Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name?\\
-Q2: Is it possible to predict a car's make based on the same factors? 
+Q1: Is it possible to predict the outcome of a car's miles per gallon (mpg) based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, make and model?\\
+Q2: Is it possible to predict a car's make based on the same factors?
 
 % The research question must be phrased as a question, ending with "?".
 % It is often a good idea to structure your research question into one overall question with a number of sub-questions, and you can number them i.e. Q1, Q2 etc. to make it easy to refer to them.
@@ -57,7 +61,10 @@ Q2: Is it possible to predict a car's make based on the same factors?
 
 \section{Methods\label{sec:Methods}}
 
-pair plot
+A correlation matrix was created after cleaning up the dataset. This matrix showed a strong negative linear relationship between mgp, cylinders, displacement, horsepower, and weight. This enabled the study to move forward with the hypothesis that we could determine mgp based on our dataset. 
+
+\includegraphics[width=0.9\linewidth]{images/Correlation.png}
+
 
 In this study, linear regression and logistic regression were applied to predict the outcome of a car's miles per gallon and make, respectively. Linear regression utilized factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name to predict miles per gallon. Logistic regression used the same factors to predict the car's make.
 
@@ -66,8 +73,6 @@ The dataset, provided by Henrik Strøm, an AI teacher at KEA, included details o
 Following the data completion, feature engineering was conducted. This process transformed categorical variables, such as make and model, into numerical values through the use of one-hot encoding, enabling their inclusion in the regression analysis.
 
 Different machine learning models were considered, and their performances were gauged using metrics such as mean squared error, mean absolute error, and root mean squared error.
-
-
 
 % The methods section is for documenting the methods you apply to conduct your research.
 % It is about the methods and how they will be applied, but not about their actual application.
