@@ -34,7 +34,7 @@
     \begin{@twocolumnfalse}
         \maketitle
         \begin{abstract}
-            
+            The findings reveal that accurate prediction of car mileage and make is achievable using machine learning models. Key predictors such as engine displacement, horsepower, and origin significantly influence the outcomes. The best-performing models exhibit high accuracy and provide valuable insights into the relationships between predictor variables and target outcomes.
         \end{abstract}
     \end{@twocolumnfalse}
     \vspace{1cm}
@@ -74,6 +74,8 @@ Following the data completion, feature engineering was conducted. This process t
 
 Different machine learning models were considered, and their performances were gauged using metrics such as mean squared error, mean absolute error, and root mean squared error.
 
+The data was split into three data groups for training, validation, and testing. The training set was used to fit the models, the validation set was used for model selection and tuning, and the testing set was used to evaluate the performance of the final selected model.
+
 % The methods section is for documenting the methods you apply to conduct your research.
 % It is about the methods and how they will be applied, but not about their actual application.
 % Ideally, you should write your method section before you start the actual research.
@@ -81,16 +83,23 @@ Different machine learning models were considered, and their performances were g
 
 \section{Analysis\label{sec:Analysis}}
 
+Exploratory data analysis was conducted to uncover insights into the connections between predictor variables and the target outcomes, which are miles per gallon (mpg) and car make. Using descriptive statistics, visualizations, and correlation analysis, this phase explored the data to understand its distribution, identify patterns, and reveal associations between variables. Subsequently, the performance of each machine learning model was scrutinized to determine how well it could predict the car's mpg and make. The accuracy of these models was quantified through metrics like mean absolute error, which helped account for outliers, and root mean squared error, providing a comprehensive measure of prediction error. In addition to evaluating individual model accuracy, a comparative analysis was performed to contrast various models. This comparison assessed each model's accuracy, computational demands, and consistency in the face of data variability, with the aim of identifying the most effective model for predicting the car's performance and make.
+
 % In the analysis section you apply the methods you described in the method section.
 % It is specific to your particular paper and your particular research question.
 % Make sure to make cross references back to your method section.
 
 \section{Findings\label{sec:Findings}}
-
+In our investigation into the predictive capabilities of machine learning models on automotive data, we observed contrasting outcomes for the two posed research questions. The linear regression models, particularly the Random Forest regressor, demonstrated a remarkable ability to predict a car's fuel efficiency (mpg) with an R² score of 0.92. This high level of accuracy indicates a strong relationship between the car's features, such as cylinders, displacement, horsepower, weight, acceleration, and model year, and its fuel efficiency.
+Conversely, the attempt to classify cars based on their make using similar features resulted in a maximum accuracy of only 0.4 across various classification models. This suggests that the features used, while highly indicative of fuel efficiency, do not carry enough distinct information to reliably determine the make of a car.
 % Here you present your findings, that is what came out of your analysis.
 % Make sure to cross reference back to your analysis section.
 
 \section{Conclusion\label{sec:Conclusion}}
+
+The high R² score achieved in predicting a car's mpg confirms the efficacy of Random Forest regression models in capturing the complex relationships between multiple vehicle attributes and fuel efficiency. This outcome underlines the potential of machine learning in enhancing our understanding of fuel consumption patterns and contributing to more energy-efficient automotive designs.
+On the other hand, the low accuracy in classifying car makes points to the inherent limitations of the selected features in distinguishing between different manufacturers. This highlights the need for incorporating more distinctive or qualitative data points that could better capture the nuances specific to each car make.
+Our findings underscore the importance of feature selection in machine learning tasks and the need to tailor the feature set according to the specific problem at hand. Future research could explore additional features, such as design and brand-specific attributes, that may offer improved differentiation between car makes. Additionally, further investigation into other regression models and feature engineering techniques could potentially enhance the predictive accuracy of fuel efficiency models.
 
 % In the conclusion you answer your research question based on your findings.
 % Make sure to make cross references to your research question, analysis, and findings sections.
