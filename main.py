@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 from data import data_cleaner, data_handler, data_visualizer
-=======
 from data import data_cleaner, data_handler
->>>>>>> fa6e828e74f011e2fde16d73f8c11ba5d0a15deb
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier, MLPRegressor
