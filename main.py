@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from data import data_cleaner, data_handler, data_visualizer
+=======
+from data import data_cleaner, data_handler
+>>>>>>> fa6e828e74f011e2fde16d73f8c11ba5d0a15deb
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier, MLPRegressor
@@ -63,10 +67,10 @@ joblib.dump(model, f"{best_model_name}.pkl")
 
 loaded_model = joblib.load(f"{best_model_name}.pkl")
 predictions = loaded_model.predict(X_validation)
+mae = mean_absolute_error(y_validation, predictions)
 mse = mean_squared_error(y_validation, predictions)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_validation, predictions)
-mse = mean_squared_error(y_validation, predictions)
 print(f'Validation data evaluation of {best_model_name}: \n')
 print(f"{model.__class__.__name__} MAE:", mae)
 print(f"{model.__class__.__name__} MSE:", mse)
@@ -77,7 +81,7 @@ plt.figure(figsize=(10, 6))
 plt.scatter(y_validation, predictions)
 plt.xlabel('Actual values')
 plt.ylabel('Predicted values')
-plt.title('Predicted vs Actual values')
+plt.title(f'BIS R-Model: {best_model_name}')
 plt.plot([y_validation.min(), y_validation.max()], [y_validation.min(), y_validation.max()], 'k--', lw=4)
 plt.show()
 
@@ -119,7 +123,7 @@ predictions = loaded_model.predict(X_validation)
 accuracy = accuracy_score(y_validation, predictions)
 
 print(f'Validation data evaluation of {best_model_name}:')
-print('Accuracy on validation data:', accuracy, '\n')
+print(f'Accuracy on validation data: {best_accuracy}')
 
 
 def prepare_data():

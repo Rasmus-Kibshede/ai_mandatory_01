@@ -4,7 +4,7 @@
 % you can switch between these two (and more) styles by commenting one out (use percentage)
 \usepackage[backend=biber]{biblatex}
 %\usepackage[backend=biber, style=authoryear-icomp]{biblatex}
-\addbibresource{refs.bib}
+\addbibresource{./refs.bib}
 
 \usepackage{graphicx}
 
@@ -29,13 +29,22 @@
 
 \begin{document}
 
+%\twocolumn[
+%    \begin{@twocolumnfalse}
+%        \maketitle
+%        \begin{GroupName} 
+%           Group name: Silicon
+%        \end{GroupName}
+%    \end{@twocolumnfalse}
+%    \vspace{1cm}
+%]
+
+
 \twocolumn[
     \begin{@twocolumnfalse}
         \maketitle
         \begin{abstract}
-            Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name? 
-            Is it possible to predict a car's make based on the same factors? 
-            This paper explores these questions using linear regression and logistic regression models.
+            The findings reveal that accurate prediction of car mileage and make is achievable using machine learning models. Key predictors such as engine displacement, horsepower, and origin significantly influence the outcomes. The best-performing models exhibit high accuracy and provide valuable insights into the relationships between predictor variables and target outcomes.
         \end{abstract}
     \end{@twocolumnfalse}
     \vspace{1cm}
@@ -43,13 +52,17 @@
 
 
 \section{Introduction\label{sec:Introduction}}
+Predictive modeling in the automotive industry has become increasingly relevant and valuable in recent years, offering insights into vehicle performance, efficiency, and market trends. In this study, we address two fundamental questions \ref{sec:Research Question}
+ 
+These questions drive our investigation into the predictive capabilities of machine learning models when applied to a dataset comprising detailed information about automotive performance and specifications. By exploring these questions, we aim to assess the feasibility and accuracy of leveraging predictive analytics techniques, particularly linear regression for mpg prediction and logistic regression for make prediction. Our findings have the potential to contribute valuable insights to the automotive industry, informing decisions related to vehicle design, marketing strategies, and consumer preferences.
+
 
 % The introduction must put your paper into a context.
 % The reader should be able to understand your paper based on the background information provided in the introduction.
 
 \section{Research Question\label{sec:Research Question}}
-Q1: Is it possible to predict the outcome of a car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name?\\
-Q2: Is it possible to predict a car's make based on the same factors? This paper explores these questions using linear regression and logistic regression.
+Q1: Is it possible to predict the outcome of a car's miles per gallon (mpg) based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, make and model?\\
+Q2: Is it possible to predict a car's make based on the same factors?
 
 % The research question must be phrased as a question, ending with "?".
 % It is often a good idea to structure your research question into one overall question with a number of sub-questions, and you can number them i.e. Q1, Q2 etc. to make it easy to refer to them.
@@ -57,26 +70,20 @@ Q2: Is it possible to predict a car's make based on the same factors? This paper
 
 \section{Methods\label{sec:Methods}}
 
-In order to predict the outcome of a car's miles per gallon and make, two different methods were utilized: linear regression and logistic regression. Linear regression was used to predict the car's miles per gallon based on various factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name. Logistic regression, on the other hand, was employed to predict the car's make based on the same set of factors.
+A correlation matrix was created after cleaning up the dataset. This matrix showed a strong negative linear relationship between mgp, cylinders, displacement, horsepower, and weight. This enabled the study to move forward with the hypothesis that we could determine mgp based on our dataset. 
 
-% We decided to follow \textcite{goldstein2017deconstructing} and follow the six steps of Data Science Deconstucted. We also needed to consider which data wrangling to perform \textcite{endel2015data}, \textcite{langer2023python}. 
+\includegraphics[width=0.9\linewidth]{images/Correlation.png}
 
-% During our analysis of the data set, we discovered several outliers, which led us to investigate and identify additional errors in the data. Among other things, we found four cars where the horsepower values were missing, and we searched for relevant information to fill in these missing values. Additionally, we encountered typos in the 'car name' variable, which we decided to split into 'make' and 'model'. To clean the dataset, we ran a dynamic process where we checked and fixed typos in all 'make' values. We also reviewed the dataset to identify and correct any null values, empty strings, and special characters that had crept into the dataset. These steps were essential to ensure that our data was of high quality and reliable to train and evaluate our models. Another important step was to input missing data for the 'horsepower' variable. Since it was only 6 entires that were missing, we decided to manually search for the missing values. We found the missing values by searching for the car model and year on the internet. The dataset also included different naming for the same car make, such as Chevy and Chevrolet, VW and Volkswagen, Mercedes and Mercedes Benz. We decided to merge these into one category to avoid having the same car make represented by different names. 
 
-\subsection{Data Preparation}
+In this study, linear regression and logistic regression were applied to predict the outcome of a car's miles per gallon and make, respectively. Linear regression utilized factors such as the number of cylinders, displacement, horsepower, weight, acceleration, model year, origin, and car name to predict miles per gallon. Logistic regression used the same factors to predict the car's make.
 
-For the purpose of this study, a dataset containing information about car performance and make was collected from Henrik Strøm, AI teacher at KEA. Upon initial review of the dataset, we identified missing datapoints within the 'horsepower' variable which were marked with a '?'. Considering the limited size of the dataset, we chose to impute these missing values manually. This was done by examining other cars within the dataset that had similar characteristics and forming educated guesses on the likely horsepower. This approach allowed us to maintain data integrity without resorting to more complex imputation methods which may not be suitable given the dataset's constraints.
+The dataset, provided by Henrik Strøm, an AI teacher at KEA, included details on car performance and make. Initial examination revealed faulty and deficient data. Using well know data cleaning techniques such as Preprocessing \textcite{hellerstein2013quantitative}
 
-\subsubsection{Feature Engineering}
+Following the data completion, feature engineering was conducted. This process transformed categorical variables, such as make and model, into numerical values through the use of one-hot encoding, enabling their inclusion in the regression analysis.
 
-After ensuring the data was complete, we performed feature engineering to transform categorical variables (such as make and model) into numerical values that can be used in the regression models. We utilized one-hot encoding to convert the categorical variables into binary representations.
+Different machine learning models were considered, and their performances were gauged using metrics such as mean squared error, mean absolute error, and root mean squared error.
 
-\subsection{Machine Learning Models}
-
-\subsection{Evaluation}
-To evaluate the performance of our regression models, we employed metrics such as mean squared error (MSE), mean absolute error (MAE) and root mean squared error (RMSE)
-
-\subsection{Implementation}
+The data was split into three data groups for training, validation, and testing. The training set was used to fit the models, the validation set was used for model selection and tuning, and the testing set was used to evaluate the performance of the final selected model.
 
 % The methods section is for documenting the methods you apply to conduct your research.
 % It is about the methods and how they will be applied, but not about their actual application.
@@ -85,16 +92,23 @@ To evaluate the performance of our regression models, we employed metrics such a
 
 \section{Analysis\label{sec:Analysis}}
 
+Exploratory data analysis was conducted to uncover insights into the connections between predictor variables and the target outcomes, which are miles per gallon (mpg) and car make. Using descriptive statistics, visualizations, and correlation analysis, this phase explored the data to understand its distribution, identify patterns, and reveal associations between variables. Subsequently, the performance of each machine learning model was scrutinized to determine how well it could predict the car's mpg and make. The accuracy of these models was quantified through metrics like mean absolute error, which helped account for outliers, and root mean squared error, providing a comprehensive measure of prediction error. In addition to evaluating individual model accuracy, a comparative analysis was performed to contrast various models. This comparison assessed each model's accuracy, computational demands, and consistency in the face of data variability, with the aim of identifying the most effective model for predicting the car's performance and make.
+
 % In the analysis section you apply the methods you described in the method section.
 % It is specific to your particular paper and your particular research question.
 % Make sure to make cross references back to your method section.
 
 \section{Findings\label{sec:Findings}}
-
+In our investigation into the predictive capabilities of machine learning models on automotive data, we observed contrasting outcomes for the two posed research questions. The linear regression models, particularly the Random Forest regressor, demonstrated a remarkable ability to predict a car's fuel efficiency (mpg) with an R² score of 0.92. This high level of accuracy indicates a strong relationship between the car's features, such as cylinders, displacement, horsepower, weight, acceleration, and model year, and its fuel efficiency.
+Conversely, the attempt to classify cars based on their make using similar features resulted in a maximum accuracy of only 0.4 across various classification models. This suggests that the features used, while highly indicative of fuel efficiency, do not carry enough distinct information to reliably determine the make of a car.
 % Here you present your findings, that is what came out of your analysis.
 % Make sure to cross reference back to your analysis section.
 
 \section{Conclusion\label{sec:Conclusion}}
+
+The high R² score achieved in predicting a car's mpg confirms the efficacy of Random Forest regression models in capturing the complex relationships between multiple vehicle attributes and fuel efficiency. This outcome underlines the potential of machine learning in enhancing our understanding of fuel consumption patterns and contributing to more energy-efficient automotive designs.
+On the other hand, the low accuracy in classifying car makes points to the inherent limitations of the selected features in distinguishing between different manufacturers. This highlights the need for incorporating more distinctive or qualitative data points that could better capture the nuances specific to each car make.
+Our findings underscore the importance of feature selection in machine learning tasks and the need to tailor the feature set according to the specific problem at hand. Future research could explore additional features, such as design and brand-specific attributes, that may offer improved differentiation between car makes. Additionally, further investigation into other regression models and feature engineering techniques could potentially enhance the predictive accuracy of fuel efficiency models.
 
 % In the conclusion you answer your research question based on your findings.
 % Make sure to make cross references to your research question, analysis, and findings sections.
