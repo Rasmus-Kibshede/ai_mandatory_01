@@ -1,7 +1,4 @@
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-
-from data import data_cleaner, data_handler
+from data import data_cleaner, data_handler, data_visualizer
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier, MLPRegressor
@@ -10,12 +7,15 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, Grad
     GradientBoostingClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, mean_absolute_error
-import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
 import numpy as np
 
+
 data = data_handler.load_data('data/modified_dataset.csv')
+
+#data_visualizer.visualize_data(data)
+
 
 print('\n|----------------------- Regression --------------------------|')
 X = data.drop(['mpg'], axis=1)
@@ -31,8 +31,7 @@ models = [MLPRegressor(hidden_layer_sizes=(100, 50), max_iter=1000),
           Lasso(alpha=1.0),
           DecisionTreeRegressor(max_depth=5),
           GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3),
-          RandomForestRegressor(n_estimators=100, random_state=42),
-          ]
+          RandomForestRegressor(n_estimators=100, random_state=42)]
 
 best_model_name = ""
 best_mse = float('inf')
@@ -80,7 +79,7 @@ plt.xlabel('Actual values')
 plt.ylabel('Predicted values')
 plt.title('Predicted vs Actual values')
 plt.plot([y_validation.min(), y_validation.max()], [y_validation.min(), y_validation.max()], 'k--', lw=4)
-#plt.show()
+plt.show()
 
 print('\n|-------------------- Classification -------------------------|')
 X = data.drop(columns=['make'])
@@ -90,10 +89,11 @@ X_test, X_train, X_validation, y_test, y_train, y_validation = data_handler.spli
 print('| Training size:', len(X_train), '| Testing size:', len(X_test), '| Validation size:', len(X_validation), '|\n')
 
 models = [KNeighborsClassifier(n_neighbors=4),
-          MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10000, random_state=42, learning_rate='adaptive', alpha=0.0001),
+          MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10000, random_state=42, learning_rate='adaptive',
+                        alpha=0.0001),
           DecisionTreeClassifier(criterion='gini', max_depth=14, min_samples_split=2, min_samples_leaf=1),
           RandomForestClassifier(n_estimators=8, random_state=42),
-          GradientBoostingClassifier(max_depth=1000, learning_rate=0.001, random_state=42),
+          GradientBoostingClassifier(max_depth=3000, learning_rate=0.001, random_state=42),
           GaussianNB()]
 
 best_model_name = ""
