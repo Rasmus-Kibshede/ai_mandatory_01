@@ -20,7 +20,11 @@ data = data_handler.load_data('data/modified_dataset.csv')
 
 #data_visualizer.visualize_data(data)
 
+#TODO Run new models, untill sattisfied with accuracy
 
+#TODO Load in functional models, test with validation data.
+
+#TODO Divide into another file, this needs to be new models and load model.
 print('\n|----------------------- Regression --------------------------|')
 X = data.drop(['mpg'], axis=1)
 y = data['mpg']
@@ -85,6 +89,7 @@ plt.title(f'BIS R-Model: {best_model_name}')
 plt.plot([y_validation.min(), y_validation.max()], [y_validation.min(), y_validation.max()], 'k--', lw=4)
 plt.show()
 
+#TODO Divide into another file, this needs to be new models and load model.
 print('\n|-------------------- Classification -------------------------|')
 X = data.drop(columns=['make'])
 X_transformed = data_handler.data_encoder(X, ['model'])
